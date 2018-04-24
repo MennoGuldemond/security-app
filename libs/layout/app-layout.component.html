@@ -1,0 +1,67 @@
+<div class="app-container"
+    [class.default]="(uiStore | async)?.theme?.name === 'default'"
+    [class.default-dark]="(uiStore | async)?.theme?.name === 'default-dark'">
+
+  <mat-toolbar color="primary" class="toolbar">
+
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <h1 class="app-name">{{ appTitle }}</h1>
+
+    <!-- Items after this in toolbar will be pushed to the right -->
+    <span class="fill-space"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="themeMenu">
+      <mat-icon>format_color_fill</mat-icon>
+    </button>
+    <mat-menu #themeMenu="matMenu" [overlapTrigger]="false">
+      <div>
+        <button *ngFor="let theme of themes" mat-menu-item (click)="selectTheme(theme)">{{ theme.label }}</button>
+      </div>
+    </mat-menu>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container" fullscreen>
+    <mat-sidenav #sidenav [mode]="(isMobileDevice === true) ? 'over' : 'side'" [opened]="true">
+      <!-- <mat-nav-list class="sidenav-list">
+        <div *ngFor="let item of menuList">
+          <a mat-list-item  routerLink="{{item.route}}" routerLinkActive="nav-route-active" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon *ngIf="item.childs?.length > 0" matListIcon color="primary"
+              class="menu-has-childs" (click)="item.opened = !item.opened" >{{item.opened !== true?'chevron_right':'expand_less'}}</mat-icon>
+            <mat-icon matListIcon color="primary">{{item.icon}}</mat-icon>{{item.label}}
+          </a>
+
+          <div *ngIf="item.opened">
+            <div  *ngFor="let childitem of item.childs" >
+              <a mat-list-item  routerLink="{{childitem.route}}" routerLinkActive="nav-route-active" [routerLinkActiveOptions]="{exact: true}">
+                <mat-icon matListIcon color="primary" class="menu-child">{{childitem.icon}}</mat-icon>{{childitem.label}}
+              </a>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <a mat-list-item>
+          <mat-icon matListIcon color="primary">help</mat-icon>Help
+        </a>
+      </mat-nav-list> -->
+    </mat-sidenav>
+
+    <mat-sidenav-content class="page-wrap">
+      <main class="content">
+        <router-outlet></router-outlet>
+      </main>
+      <footer>
+        <span class="version">&copy; 2018 SCRTY - All rights reserved</span>
+      </footer>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>

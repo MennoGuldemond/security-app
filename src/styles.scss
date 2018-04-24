@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+}
+
+// To make the table header stick to the top when scrolling
+mat-header-row {
+    top: 0 !important;
+    position: sticky;
+    z-index: 10;
+}
+
+mat-header-row mat-header-cell {
+    color: white !important;
+}
+
+.page-padding {
+    padding: 10px;
+}
+
+.right {
+    float: right;
+}

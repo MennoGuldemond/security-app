@@ -1,0 +1,101 @@
+@import '~@angular/material/theming';
+// @import '~@covalent/core/theming/all-theme';
+// Plus imports for other components.
+ 
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+
+$primary: mat-palette($mat-green, 600, 100, 900);
+$accent:  mat-palette($mat-green, 800, 100, 900);
+$warn:    mat-palette($mat-red, 500, 100, 900);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+ 
+// **********************
+// Defualt theme
+.default {
+    $primary: mat-palette($mat-green, 600, 100, 900);
+    $accent:  mat-palette($mat-green, 800, 100, 900);
+    $warn:    mat-palette($mat-red, 500, 100, 900);
+
+    // Create the theme object (a Sass map containing all of the palettes).
+    $theme: mat-light-theme($primary, $accent, $warn);
+
+    mat-header-row { background-color: mat-color($primary); }
+    .mat-table-focussed { background-color: mat-color($primary); }
+    .nav-route-active { color: mat-color($primary) !important; }
+
+    @include angular-material-theme($theme);
+}
+ 
+// **********************
+// Dark theme
+.default-dark {
+    $dark-primary: mat-palette($mat-cyan, 600, 100, 900);
+    $dark-accent:  mat-palette($mat-cyan, 800, 100, 900);
+    $dark-warn:    mat-palette($mat-deep-purple, 600, 100, 900);
+
+    $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+    mat-header-row { background-color: mat-color($dark-primary); }
+    .mat-table-focussed { background-color: mat-color($dark-primary); }
+    .nav-route-active { color: mat-color($dark-primary) !important; }
+
+    @include angular-material-theme($dark-theme);
+}
+ 
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+// @include covalent-theme($theme);
+
+// Active icon color in list nav
+mat-nav-list, mat-list {
+    [mat-list-item].active {
+        mat-icon[matListAvatar] {
+            background-color: mat-color($accent);
+            color: mat-color($accent, default-contrast);
+        }
+        mat-icon[matListIcon] {
+            color: mat-color($accent);
+        }
+    }
+}
+
+/* ------------------------------------------------------------------------------- */
+$foreground: map-get($theme, foreground);
+$background: map-get($theme, background);
+
+// Apply theme for this app
+
+// NGX Charts
+[ngx-charts-axis-label] text {
+    fill: mat-color($foreground, secondary-text);
+}
+.tick text {
+    fill: mat-color($foreground, disabled);
+}
+.gridline-path {
+    &.gridline-path-horizontal,
+    &.gridline-path-vertical {
+        stroke: rgba(black, 0.06);
+    }
+}
+.legend-title-text {
+    color: mat-color($foreground, secondary-text);
+}
+mat-card-title{
+    &:hover {
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+    }
+    &:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+    }
+}
