@@ -10,6 +10,7 @@ import * as fromUI from '@scrty/user-interface/store/user-interface.reducers';
 import * as UserInterfaceActions from '@scrty/user-interface/store/user-interface.actions';
 
 import { ITheme } from '@scrty/user-interface/models/theme.model';
+import { IMenuItem } from '@scrty/user-interface/models/menu-item.model';
 
 @Component({
     selector: 'scrty-app-layout',
@@ -30,6 +31,12 @@ export class AppLayoutComponent implements OnInit {
     themes: ITheme[] = [
         { 'label': 'Default', 'name': 'default' },
         { 'label': 'Default dark', 'name': 'default-dark' }
+    ];
+
+    // Menu
+    menuList: IMenuItem[] = [
+        { label: 'Home', icon: 'home', route: 'home' },
+        { label: 'Account', icon: 'account_circle', route: 'account' },
     ];
 
     ngOnInit(): void {

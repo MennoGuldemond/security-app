@@ -30,7 +30,7 @@
 
   <mat-sidenav-container class="sidenav-container" fullscreen>
     <mat-sidenav #sidenav [mode]="(isMobileDevice === true) ? 'over' : 'side'" [opened]="true">
-      <!-- <mat-nav-list class="sidenav-list">
+      <mat-nav-list class="sidenav-list">
         <div *ngFor="let item of menuList">
           <a mat-list-item  routerLink="{{item.route}}" routerLinkActive="nav-route-active" [routerLinkActiveOptions]="{exact: true}">
             <mat-icon *ngIf="item.childs?.length > 0" matListIcon color="primary"
@@ -50,7 +50,7 @@
         <a mat-list-item>
           <mat-icon matListIcon color="primary">help</mat-icon>Help
         </a>
-      </mat-nav-list> -->
+      </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content class="page-wrap">
