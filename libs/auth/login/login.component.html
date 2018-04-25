@@ -1,0 +1,5 @@
+<h1>Login works</h1>
+<p>Authenticated: {{ (authState | async).isAuthenticated }}</p>
+
+<div *ngIf="(authState | async).isAuthenticated === true">LOGOUT</div>
+<div *ngIf="(authState | async).isAuthenticated === false">LOGIN</div>
