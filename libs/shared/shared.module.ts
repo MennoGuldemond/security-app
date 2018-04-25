@@ -6,9 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '@scrty/material';
+import { NotFoundComponent } from '@scrty/shared/not-found/not-found.component';
 
 @NgModule({
-    declarations: [],
+    declarations: [
+        NotFoundComponent
+    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -25,7 +28,8 @@ import { MaterialModule } from '@scrty/material';
         HttpClientModule,
         BrowserAnimationsModule,
         MaterialModule,
-        RouterModule
+        RouterModule,
+        NotFoundComponent
     ]
 })
 export class SharedModule { }
