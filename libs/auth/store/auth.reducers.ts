@@ -3,13 +3,13 @@ import * as authActions from './auth.actions';
 export interface IAuthState {
   isAuthenticated: boolean;
   token: string;
-  username: string;
+  dificulty: string;
 }
 
 const initialState: IAuthState = {
   isAuthenticated: false,
   token: localStorage.getItem('token') || '',
-  username: ''
+  dificulty: 'easy'
 };
 
 export function authReducer(state = initialState, action: authActions.AuthActions) {
@@ -17,7 +17,20 @@ export function authReducer(state = initialState, action: authActions.AuthAction
     case (authActions.SET_TOKEN): {
       return {
         ...state,
-        token: action.payload
+        token: action.payload,
+        isAuthenticated: true
+      };
+    }
+    case (authActions.LOGOUT): {
+      return {
+        ...state,
+        isAuthenticated: false
+      };
+    }
+    case (authActions.SET_DIFICULTY): {
+      return {
+        ...state,
+        dificulty: action.payload
       };
     }
     default:

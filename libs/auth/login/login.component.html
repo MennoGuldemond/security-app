@@ -1,5 +1,23 @@
-<h1>Login works</h1>
-<p>Authenticated: {{ (authState | async).isAuthenticated }}</p>
+<mat-card *ngIf="(authState | async).isAuthenticated === true">
+    <p>U bent ingelogd.</p>
+    <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+</mat-card>
 
-<div *ngIf="(authState | async).isAuthenticated === true">LOGOUT</div>
-<div *ngIf="(authState | async).isAuthenticated === false">LOGIN</div>
+<mat-card *ngIf="(authState | async).isAuthenticated === false">
+
+
+    <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="username">
+    </mat-form-field>
+
+    <div></div>
+
+    <mat-form-field>
+        <input matInput placeholder="Password" type="password" [(ngModel)]="password">
+    </mat-form-field>
+
+    <div></div>
+
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+
+</mat-card>

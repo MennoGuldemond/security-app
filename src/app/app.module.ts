@@ -7,6 +7,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { SharedModule } from '@scrty/shared';
 import { AppLayoutModule } from '@scrty/layout';
+import { AuthModule } from '@scrty/auth';
+
+import { ScrtyApiService } from '@scrty/api';
 
 import { routeConfig } from './routing/router-config';
 import { environment } from '../environments/environment';
@@ -14,12 +17,15 @@ import * as fromApp from '@scrty/base-store/app.reducers';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AuthModule } from '@scrty/auth';
+import { DificultyComponent } from './dificulty/dificulty.component';
+import { AgentDetailComponent } from './agent/agent-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DificultyComponent,
+    AgentDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,11 @@ import { AuthModule } from '@scrty/auth';
     AppLayoutModule,
     AuthModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ScrtyApiService,
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

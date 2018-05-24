@@ -1,0 +1,14 @@
+<mat-card>
+    <h3>The security-hack level is now: {{ (authState | async).dificulty }}</h3>
+    <div class="button-row">
+        <button mat-mini-fab style="background-color:red" (click)="setDificulty('easy')">
+            <mat-icon>lock</mat-icon>
+        </button>
+        <button mat-mini-fab style="background-color:orange" (click)="setDificulty('normal')">
+            <mat-icon>lock</mat-icon>
+        </button>
+        <button mat-mini-fab style="background-color:green" (click)="setDificulty('hard')">
+            <mat-icon>lock</mat-icon>
+        </button>
+    </div>
+</mat-card>

@@ -37,6 +37,8 @@ export class AppLayoutComponent implements OnInit {
     menuList: IMenuItem[] = [
         { label: 'Home', icon: 'home', route: 'home' },
         { label: 'Account', icon: 'account_circle', route: 'login' },
+        { label: 'Security Level', icon: 'lock', route: 'dificulty' },
+        { label: 'Agent', icon: 'face', route: 'agent' }
     ];
 
     ngOnInit(): void {
